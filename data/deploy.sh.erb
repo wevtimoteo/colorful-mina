@@ -43,7 +43,7 @@ fi
 
 # Bootstrap script (in deployer)
 (
-  echo "-----> Creating a temporary build path"
+  <%= print_str '-> Creating a temporary build path' %>
   <%= echo_cmd %[touch "#{lock_file}"] %> &&
   <%= echo_cmd %[mkdir -p "$build_path"] %> &&
   <%= echo_cmd %[cd "$build_path"] %> &&
@@ -55,18 +55,18 @@ fi
 #
 # Rename to the real release path, then symlink 'current'
 (
-  echo "-----> Build finished"
-  echo "-----> Moving build to $release_path"
+  <%= print_str '-> Build finished' %>
+  <%= print_str '-> Moving build to $release_path' %>
   <%= echo_cmd %[mv "$build_path" "$release_path"] %> &&
 
-  echo "-----> Updating the <%= current_path %> symlink" &&
+  <%= print_str "-> Updating the #{current_path} symlink" %> &&
   <%= echo_cmd %[ln -nfs "$release_path" "#{current_path}"] %>
 ) &&
 
 # ============================
 # === Start up serve => (in deployer)
 (
-  echo "-----> Launching"
+  <%= print_str '-> Launching' %>
   <%= echo_cmd %[cd "$release_path"] %>
 <%= indent 2, (launch.empty? ? "true" : launch) %>
 ) &&
@@ -76,13 +76,13 @@ fi
 (
   rm -f "<%= lock_file %>"
   echo "$version" > "./last_version"
-  echo "-----> Done. Deployed v$version"
+  <%= print_str "-> Done. Deployed v$version" %>
 ) ||
 
 # ============================
 # === Failed deployment
 (
-  echo "! ERROR: Deploy failed."
+  echo "<%= print_str('! ERROR: Deploy failed.') %>
 
 <%= indent 2, clean %>
 
@@ -91,7 +91,7 @@ fi
     <%= echo_cmd %[rm -rf "$build_path"] %>
   )
   [ -e "$release_path" ] && (
-    echo "Deleting release"
+    <%= print_str 'Deleting release' %>
     <%= echo_cmd %[rm -rf "$release_path"] %>
   )
   (

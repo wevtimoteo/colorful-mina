@@ -147,11 +147,11 @@ namespace :rails do
           echo "-----> DB migrations unchanged; skipping DB migration"
         ],
         :changed => %[
-          echo "-----> #{message}"
+          #{print_str "-> #{message}"}
           #{echo_cmd %[#{rake} db:migrate]}
         ],
         :default => %[
-          echo "-----> Migrating database"
+          #{print_str '-> Migrating database'}
           #{echo_cmd %[#{rake} db:migrate]}
         ]
     end
@@ -161,7 +161,7 @@ namespace :rails do
   desc "Migrates the Rails database."
   task :'db_migrate:force' do
     queue %{
-      echo "-----> Migrating database"
+      #{print_str '-> Migrating database'}
       #{echo_cmd %[#{rake} db:migrate]}
     }
   end

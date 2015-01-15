@@ -63,7 +63,7 @@ namespace :deploy do
     end
 
     queue %{
-      echo "-----> Symlinking shared paths"
+      #{print_str '-> Symlinking shared paths'}
       #{cmds.flatten.join(" &&\n")}
     }
   end
@@ -78,7 +78,7 @@ namespace :deploy do
   desc "Clean up old releases."
   task :cleanup do
     queue %{
-      echo "-----> Cleaning up old releases (keeping #{keep_releases!})"
+      #{print_str "-> Cleaning up old releases (keeping #{keep_releases!})"}
       #{echo_cmd %{cd "#{deploy_to!}/#{releases_path!}" || exit 15}}
       #{echo_cmd %{count=`ls -1d [0-9]* | sort -rn | wc -l`}}
       #{echo_cmd %{remove=$((count > #{keep_releases} ? count - #{keep_releases} : 0))}}
@@ -99,7 +99,7 @@ task :setup do
   user = settings.user? ? "#{settings.user}" : "username"
 
   queue %{
-    echo "-----> Setting up #{deploy_to}" && (
+    #{print_str "-> Setting up #{deploy_to}"} && (
       #{echo_cmd %{mkdir -p "#{deploy_to}"}} &&
       #{echo_cmd %{chown -R `whoami` "#{deploy_to}"}} &&
       #{echo_cmd %{chmod g+rx,u+rwx "#{deploy_to}"}} &&
@@ -111,7 +111,7 @@ task :setup do
       echo "" &&
       #{echo_cmd %{ls -la "#{deploy_to}"}} &&
       echo "" &&
-      echo "-----> Done."
+      #{print_str "-> Done."}
     ) || (
       echo "! ERROR: Setup failed."
       echo "! Ensure that the path '#{deploy_to}' is accessible to the SSH user."

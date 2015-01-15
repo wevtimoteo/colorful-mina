@@ -28,7 +28,7 @@ set :shared_paths, ['config/database.yml']
 set :keep_releases, 2
 
 task :environment do
-  queue %[echo "-----> Loading env"]
+  queue print_str('-> Loading env')
 end
 
 desc "Deploys."
@@ -56,7 +56,7 @@ end
 namespace :passenger do
   task :restart do
     queue %{
-      echo "-----> Restarting passenger"
+      #{print_strl'-> Restarting passenger'}
       #{echo_cmd %[mkdir -p tmp]}
       #{echo_cmd %[touch tmp/restart.txt]}
     }
