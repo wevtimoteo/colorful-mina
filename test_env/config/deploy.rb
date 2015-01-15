@@ -56,7 +56,7 @@ end
 namespace :passenger do
   task :restart do
     queue %{
-      #{print_strl'-> Restarting passenger'}
+      #{print_str '-> Restarting passenger'}
       #{echo_cmd %[mkdir -p tmp]}
       #{echo_cmd %[touch tmp/restart.txt]}
     }
