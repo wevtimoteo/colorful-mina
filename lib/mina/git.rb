@@ -31,26 +31,26 @@ namespace :git do
 
     clone = if commit?
       %[
-        echo "-----> Using git commit '#{commit}'" &&
+        #{print_str "-> Using git commit '#{commit}'"} &&
         #{echo_cmd %[git clone "#{repository!}" . --recursive]} &&
         #{echo_cmd %[git checkout -b current_release "#{commit}" --force]} &&
       ]
     else
       %{
         if [ ! -d "#{deploy_to}/scm/objects" ]; then
-          echo "-----> Cloning the Git repository"
+          #{print_str '-> Cloning the Git repository'}
           #{echo_cmd %[git clone "#{repository!}" "#{deploy_to}/scm" --bare]}
         else
-          echo "-----> Fetching new git commits"
+          #{print_str '-> Fetching new git commits'}
           #{echo_cmd %[(cd "#{deploy_to}/scm" && git fetch "#{repository!}" "#{branch}:#{branch}" --force)]}
         fi &&
-        echo "-----> Using git branch '#{branch}'" &&
+        #{print_str "-> Using git branch '#{branch}'"} &&
         #{echo_cmd %[git clone "#{deploy_to}/scm" . --recursive --branch "#{branch}"]} &&
       }
     end
 
     status = %[
-      echo "-----> Using this git commit" &&
+      #{print_str '-> Using this git commit'} &&
       echo &&
       #{echo_cmd %[git --no-pager log --format='%aN (%h):%n> %s' -n 1]} &&
       #{echo_cmd %[rm -rf .git]} &&
