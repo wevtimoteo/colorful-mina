@@ -54,7 +54,6 @@ module Mina
     # ### print_status
     # Prints a status message. (`----->`)
     def print_status(msg)
-      puts ""  if verbose_mode?
       puts "#{color('----->', 32)} #{msg}"
     end
 
@@ -87,6 +86,10 @@ module Mina
     # Returns the string `str` with the color `c`.
     def color(str, c)
       ENV['NO_COLOR'] ? str : "\033[#{c}m#{str}\033[0m"
+    end
+
+    def puts(msg)
+      %[echo "#{msg}"]
     end
   end
 end
