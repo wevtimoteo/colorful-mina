@@ -31,7 +31,7 @@ namespace :git do
 
     clone = if commit?
       %[
-        #{print_str "-> Using git commit '#{commit}'"} &&
+        #{print_str "-> Using git commit '" + commit + "'"} &&
         #{echo_cmd %[git clone "#{repository!}" . --recursive]} &&
         #{echo_cmd %[git checkout -b current_release "#{commit}" --force]} &&
       ]
@@ -44,7 +44,7 @@ namespace :git do
           #{print_str '-> Fetching new git commits'}
           #{echo_cmd %[(cd "#{deploy_to}/scm" && git fetch "#{repository!}" "#{branch}:#{branch}" --force)]}
         fi &&
-        #{print_str "-> Using git branch '#{branch}'"} &&
+        #{print_str "-> Using git branch '" + branch + "'"} &&
         #{echo_cmd %[git clone "#{deploy_to}/scm" . --recursive --branch "#{branch}"]} &&
       }
     end

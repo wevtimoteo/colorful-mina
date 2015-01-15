@@ -147,7 +147,7 @@ namespace :rails do
           echo "-----> DB migrations unchanged; skipping DB migration"
         ],
         :changed => %[
-          #{print_str "-> #{message}"}
+          #{print_str("-> " + message)}
           #{echo_cmd %[#{rake} db:migrate]}
         ],
         :default => %[
