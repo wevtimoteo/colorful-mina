@@ -11,11 +11,11 @@ describe 'Output Helpers' do
   end
 
   it 'print_str to status' do
-    expect(@out.print_str "-----> Getting password" ).to include "[32m----->\e[0m Getting password"
+    expect(@out.print_str "-----> Getting password" ).to include "[32m-----> Getting password"
   end
 
   it 'print_str to status (2)' do
-    expect(@out.print_str "-> Getting password" ).to include "[32m----->\e[0m Getting password"
+    expect(@out.print_str "-> Getting password" ).to include "[32m-----> Getting password"
   end
 
   it 'print_str to error' do

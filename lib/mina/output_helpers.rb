@@ -54,7 +54,7 @@ module Mina
     # ### print_status
     # Prints a status message. (`----->`)
     def print_status(msg)
-      puts "#{color('----->', 32)} #{msg}"
+      puts color(("-----> " + msg), 32)
     end
 
     # ### print_error
