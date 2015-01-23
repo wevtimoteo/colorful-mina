@@ -30,7 +30,7 @@ In your project, type `mina init` to create a sample of this file.
     $ mina init
     Created config/deploy.rb.
 
-This is just a Rake file with tasks! See [About deploy.rb](#about-deployrb) for 
+This is just a Rake file with tasks! See [About deploy.rb](#about-deployrb) for
 more info on what *deploy.rb* is. You will want to at least configure your
 server:
 
@@ -55,8 +55,8 @@ change it's ownership to the correct user.
 
 ### Step 3: Run 'mina setup'
 
-Back at your computer, do `mina setup` to set up the [folder 
-structure](#directory_structure) in this path. This will connect to your server 
+Back at your computer, do `mina setup` to set up the [folder
+structure](#directory_structure) in this path. This will connect to your server
 via SSH and create the right directories.
 
     $ mina setup
@@ -115,7 +115,7 @@ set :user, 'john'
 set :domain, 'flipstack.com'
 
 task :logs do
-  queue 'echo "Contents of the log file are as follows:"'
+  queue print_str('Contents of the log file are as follows:')
   queue "tail -f /var/log/apache.log"
 end
 ~~~
@@ -300,7 +300,7 @@ Basic usage:
 
 ### Tasks
 
-There are many tasks available. See the [tasks reference](http://mina-deploy.github.io/mina/tasks/index.html), or 
+There are many tasks available. See the [tasks reference](http://mina-deploy.github.io/mina/tasks/index.html), or
 type `mina tasks`.
 
 ### Variables
@@ -538,7 +538,7 @@ Returns true or false.
 
 ~~~ ruby
 if verbose_mode?
-  queue %[echo "-----> Starting a new process"]
+  queue %[print_str '-> Starting a new process']
 end
 ~~~
 
@@ -979,11 +979,11 @@ Adds settings and tasks for managing projects with [whenever].
 Acknowledgements
 ----------------
 
-© 2012-2014, Nadarei. Released under the [MIT 
+© 2012-2014, Nadarei. Released under the [MIT
 License](http://www.opensource.org/licenses/mit-license.php).
 
-Mina is authored and maintained by [Rico Sta. Cruz][rsc] and [Michael 
-Galero][mg] with help from its [contributors][c]. It is sponsored by our 
+Mina is authored and maintained by [Rico Sta. Cruz][rsc] and [Michael
+Galero][mg] with help from its [contributors][c]. It is sponsored by our
 startup, [Nadarei][nd].
 
  * [Nadarei](http://nadarei.co) (nadarei.co)
