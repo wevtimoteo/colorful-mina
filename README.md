@@ -1,4 +1,4 @@
-# Mina
+# Colorful Mina
 
 Really fast deployer and server automation tool.
 
@@ -13,7 +13,13 @@ session per deploy, minimizing the SSH connection overhead.
     $ gem install mina
     $ mina
 
-[![Build Status](https://travis-ci.org/mina-deploy/mina.svg?branch=master)](https://travis-ci.org/mina-deploy/mina) [![Gem Version](https://badge.fury.io/rb/mina.svg)](http://badge.fury.io/rb/mina)
+[![Build Status](https://travis-ci.org/wevtimoteo/mina.svg?branch=master)](https://travis-ci.org/wevtimoteo/mina) [![Gem Version](https://badge.fury.io/rb/mina.svg)](http://badge.fury.io/rb/mina)
+
+## About Colorful Mina
+
+This fork uses `print_str` method already implemented all over `mina-deploy/mina` repository.
+
+The rest of features remain the same.
 
 User guide
 ==========
