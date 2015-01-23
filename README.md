@@ -13,7 +13,7 @@ session per deploy, minimizing the SSH connection overhead.
     $ gem install mina
     $ mina
 
-[![Build Status](https://travis-ci.org/wevtimoteo/mina.svg?branch=master)](https://travis-ci.org/wevtimoteo/mina) [![Gem Version](https://badge.fury.io/rb/mina.svg)](http://badge.fury.io/rb/mina)
+[![Build Status](https://travis-ci.org/wevtimoteo/colorful-mina.svg?branch=master)](https://travis-ci.org/wevtimoteo/colorful-mina) [![Gem Version](https://badge.fury.io/rb/mina.svg)](http://badge.fury.io/rb/mina)
 
 ## About Colorful Mina
 
