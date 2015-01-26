@@ -10,7 +10,7 @@ Compare this to the likes of Vlad or Capistrano, where each command
 is run separately on their own SSH sessions. Mina only creates *one* SSH
 session per deploy, minimizing the SSH connection overhead.
 
-    $ gem install mina
+    $ gem install colorful-mina
     $ mina
 
 [![Build Status](https://travis-ci.org/wevtimoteo/colorful-mina.svg?branch=master)](https://travis-ci.org/wevtimoteo/colorful-mina) [![Gem Version](https://badge.fury.io/rb/mina.svg)](http://badge.fury.io/rb/mina)
